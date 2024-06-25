@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class UnitConverter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Unit Converter");
+        System.out.println("Please select the conversion type:");
+        System.out.println("1. Meters to Kilometers");
+        System.out.println("2. Kilometers to Meters");
+        System.out.println("3. Inches to Feet");
+        System.out.println("4. Feet to Inches");
+        System.out.print("Enter your choice: ");
+        
+        int choice = scanner.nextInt();
+        double result = 0.0;
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter meters: ");
+                double meters = scanner.nextDouble();
+                result = metersToKilometers(meters);
+                System.out.println(meters + " meters is " + result + " kilometers.");
+                break;
+            case 2:
+                System.out.print("Enter kilometers: ");
+                double kilometers = scanner.nextDouble();
+                result = kilometersToMeters(kilometers);
+                System.out.println(kilometers + " kilometers is " + result + " meters.");
+                break;
+            case 3:
+                System.out.print("Enter inches: ");
+                double inches = scanner.nextDouble();
+                result = inchesToFeet(inches);
+                System.out.println(inches + " inches is " + result + " feet.");
+                break;
+            case 4:
+                System.out.print("Enter feet: ");
+                double feet = scanner.nextDouble();
+                result = feetToInches(feet);
+                System.out.println(feet + " feet is " + result + " inches.");
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+        scanner.close();
+    }
+
+    public static double metersToKilometers(double meters) {
+        return meters / 1000.0;
+    }
+
+    public static double kilometersToMeters(double kilometers) {
+        return kilometers * 1000.0;
+    }
+
+    public static double inchesToFeet(double inches) {
+        return inches / 12.0;
+    }
+
+    public static double feetToInches(double feet) {
+        return feet * 12.0;
+    }
+}

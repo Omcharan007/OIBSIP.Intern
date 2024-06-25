@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class StopWatch {
+    private long startTime;
+    private long endTime;
+    private boolean running;
+
+    public void start() {
+        startTime = System.currentTimeMillis();
+        running = true;
+    }
+
+    public void stop() {
+        endTime = System.currentTimeMillis();
+        running = false;
+    }
+
+    public void reset() {
+        startTime = 0;
+        endTime = 0;
+        running = false;
+    }
+
+    public long getElapsedTime() {
+        if (running) {
+            return System.currentTimeMillis() - startTime;
+        } else {
+            return endTime - startTime;
+        }
+    }
+
+    public static void main(String[] args) {
+        StopWatch stopWatch = new StopWatch();
+        Scanner scanner = new Scanner(System.in);
+        String command;
+
+        System.out.println("Simple Stopwatch Application");
+        System.out.println("Commands: start, stop, reset, exit");
+
+        while (true) {
+            System.out.print("Enter command: ");
+            command = scanner.nextLine().trim().toLowerCase();
+
+            switch (command) {
+                case "start":
+                    stopWatch.start();
+                    System.out.println("Stopwatch started.");
+                    break;
+                case "stop":
+                    stopWatch.stop();
+                    System.out.println("Stopwatch stopped. Elapsed time: " + stopWatch.getElapsedTime() + " ms");
+                    break;
+                case "reset":
+                    stopWatch.reset();
+                    System.out.println("Stopwatch reset.");
+                    break;
+                case "exit":
+                    System.out.println("Exiting stopwatch application.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid command. Please enter start, stop, reset, or exit.");
+                    break;
+            }
+        }
+    }
+}
+
